@@ -58,6 +58,6 @@ typings/
 .env
 
 # remove map and js
-app/*.js
-app/*.js.map
+app/**/*.js
+app/**/*.js.map
 
