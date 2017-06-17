@@ -2,10 +2,9 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'photo',
-  templateUrl: './photo.component.html'
+  selector: 'panel',
+  templateUrl: './panel.component.html'
 })
-export class PhotoComponent {
-  @Input() url;
+export class PanelComponent {
   @Input() title;
 }

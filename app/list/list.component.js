@@ -10,25 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var PhotoComponent = (function () {
-    function PhotoComponent() {
+var http_1 = require("@angular/http");
+var ListComponent = (function () {
+    function ListComponent(http) {
+        var _this = this;
+        this.photos = [];
+        http.get('/v1/fotos')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (photos) {
+            _this.photos = photos;
+            console.log('====================================');
+            console.log(_this.photos);
+            console.log('====================================');
+        });
     }
-    return PhotoComponent;
+    return ListComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], PhotoComponent.prototype, "url", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], PhotoComponent.prototype, "title", void 0);
-PhotoComponent = __decorate([
+ListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'photo',
-        templateUrl: './photo.component.html'
-    })
-], PhotoComponent);
-exports.PhotoComponent = PhotoComponent;
-//# sourceMappingURL=photo.component.js.map
+        selector: 'app',
+        templateUrl: './list.component.html'
+    }),
+    __metadata("design:paramtypes", [http_1.Http])
+], ListComponent);
+exports.ListComponent = ListComponent;
+//# sourceMappingURL=list.component.js.map

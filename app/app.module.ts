@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { PhotoModule } from './photo/photo.module';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { AppComponent } from './app.component';
+
+import { PhotoModule } from './photo/photo.module';
+import { PanelModule } from './panel/panel.module';
+
+import { ListComponent } from './list/list.component';
+import { RegisterComponent } from './register/register.component';
+import { routing } from './app.routes';
+
 @NgModule({
-  imports: [BrowserModule, PhotoModule, HttpModule],
-  declarations: [AppComponent],
+  imports: [BrowserModule, HttpModule, PhotoModule, PanelModule, routing],
+  declarations: [AppComponent, ListComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })
 

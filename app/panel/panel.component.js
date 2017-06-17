@@ -10,25 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var PhotoComponent = (function () {
-    function PhotoComponent() {
+var PanelComponent = (function () {
+    function PanelComponent() {
     }
-    return PhotoComponent;
+    return PanelComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
-], PhotoComponent.prototype, "url", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], PhotoComponent.prototype, "title", void 0);
-PhotoComponent = __decorate([
+], PanelComponent.prototype, "title", void 0);
+PanelComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'photo',
-        templateUrl: './photo.component.html'
+        selector: 'panel',
+        templateUrl: './panel.component.html'
     })
-], PhotoComponent);
-exports.PhotoComponent = PhotoComponent;
-//# sourceMappingURL=photo.component.js.map
+], PanelComponent);
+exports.PanelComponent = PanelComponent;
+//# sourceMappingURL=panel.component.js.map
