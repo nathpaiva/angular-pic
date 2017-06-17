@@ -9,13 +9,14 @@
           <span class="input-group-btn">
             <a [routerLink]="['/register']" class="btn btn-primary">New Photo</a>
           </span>
+          <input #textTofind (keyup)="0" class="form-control" placeholder="filtrar pelo título da foto">
         </div>
       </form>
     </div>
   </div>
   <br>
   <div class="row">
-    <panel *ngFor="let photo of photos" [title]="photo.titulo" class="col-md-2">
+    <panel *ngFor="let photo of photos | filterByTitle:textTofind.value" [title]="photo.titulo | uppercase" class="col-md-2">
       <photo [url]="photo.url" [title]="photo.titulo"></photo>
     </panel>
   </div>

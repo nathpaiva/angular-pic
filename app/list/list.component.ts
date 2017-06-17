@@ -15,9 +15,6 @@ export class ListComponent {
       .map(res => res.json())
       .subscribe(photos => {
         this.photos = photos;
-        console.log('====================================');
-        console.log(this.photos);
-        console.log('====================================');
       })
   }
 }

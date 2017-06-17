@@ -7,18 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var photo_component_1 = require("./photo.component");
-var photo_pipes_1 = require("./photo.pipes");
-var PhotoModule = (function () {
-    function PhotoModule() {
+var FilterByTitle = (function () {
+    function FilterByTitle() {
     }
-    return PhotoModule;
+    FilterByTitle.prototype.transform = function (photos, textTofind) {
+        textTofind = textTofind.toLowerCase();
+        return photos.filter(function (photo) { return photo.titulo.toLocaleLowerCase().includes(textTofind); });
+    };
+    return FilterByTitle;
 }());
-PhotoModule = __decorate([
-    core_1.NgModule({
-        declarations: [photo_component_1.PhotoComponent, photo_pipes_1.FilterByTitle],
-        exports: [photo_component_1.PhotoComponent, photo_pipes_1.FilterByTitle]
+FilterByTitle = __decorate([
+    core_1.Pipe({
+        name: 'filterByTitle'
     })
-], PhotoModule);
-exports.PhotoModule = PhotoModule;
-//# sourceMappingURL=photo.module.js.map
+], FilterByTitle);
+exports.FilterByTitle = FilterByTitle;
+//# sourceMappingURL=photo.pipes.js.map

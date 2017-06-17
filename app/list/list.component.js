@@ -19,9 +19,6 @@ var ListComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (photos) {
             _this.photos = photos;
-            console.log('====================================');
-            console.log(_this.photos);
-            console.log('====================================');
         });
     }
     return ListComponent;

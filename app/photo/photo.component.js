@@ -17,11 +17,11 @@ var PhotoComponent = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], PhotoComponent.prototype, "url", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], PhotoComponent.prototype, "title", void 0);
 PhotoComponent = __decorate([
     core_1.Component({
