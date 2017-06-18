@@ -11,9 +11,17 @@ import { PanelModule } from './panel/panel.module';
 import { ListComponent } from './list/list.component';
 import { RegisterComponent } from './register/register.component';
 import { routing } from './app.routes';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, PhotoModule, PanelModule, routing],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    PhotoModule,
+    PanelModule,
+    routing,
+    FormsModule
+  ],
   declarations: [AppComponent, ListComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })

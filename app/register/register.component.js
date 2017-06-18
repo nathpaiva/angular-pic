@@ -5,11 +5,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var photo_component_1 = require("../photo/photo.component");
 var RegisterComponent = (function () {
-    function RegisterComponent() {
+    function RegisterComponent(http) {
+        this.photo = new photo_component_1.PhotoComponent();
+        this.http = http;
     }
+    RegisterComponent.prototype.saveNewPhoto = function (e) {
+        var _this = this;
+        e.preventDefault();
+        var headers = new http_1.Headers;
+        headers.append('Content-Type', 'application/json');
+        this.http.post('/v1/fotos', JSON.stringify(this.photo), { headers: headers })
+            .subscribe(function () {
+            console.log('salvo com sucesso');
+            _this.photo = new photo_component_1.PhotoComponent;
+        }, function (err) { return console.log(err); });
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
@@ -17,7 +35,8 @@ RegisterComponent = __decorate([
         moduleId: module.id,
         selector: 'app',
         templateUrl: './register.component.html'
-    })
+    }),
+    __metadata("design:paramtypes", [http_1.Http])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map
