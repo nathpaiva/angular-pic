@@ -13,6 +13,11 @@ var core_1 = require("@angular/core");
 var PanelComponent = (function () {
     function PanelComponent() {
     }
+    PanelComponent.prototype.ngOnInit = function () {
+        this.title = this.title.length > 7 ?
+            this.title.substr(0, 7) + '...' :
+            this.title;
+    };
     return PanelComponent;
 }());
 __decorate([
