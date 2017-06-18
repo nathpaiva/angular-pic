@@ -12,10 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var photo_component_1 = require("../photo/photo.component");
+var forms_1 = require("@angular/forms");
 var RegisterComponent = (function () {
-    function RegisterComponent(http) {
+    function RegisterComponent(http, fb) {
         this.photo = new photo_component_1.PhotoComponent();
+        // registerPhoto
         this.http = http;
+        this.registerPhoto = fb.group({
+            titulo: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
+            url: ['', forms_1.Validators.required],
+            descricao: [''],
+        });
     }
     RegisterComponent.prototype.saveNewPhoto = function (e) {
         var _this = this;
@@ -36,7 +43,7 @@ RegisterComponent = __decorate([
         selector: 'app',
         templateUrl: './register.component.html'
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

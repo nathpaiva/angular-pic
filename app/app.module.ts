@@ -11,7 +11,7 @@ import { PanelModule } from './panel/panel.module';
 import { ListComponent } from './list/list.component';
 import { RegisterComponent } from './register/register.component';
 import { routing } from './app.routes';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     PhotoModule,
     PanelModule,
     routing,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [AppComponent, ListComponent, RegisterComponent],
   bootstrap: [AppComponent]

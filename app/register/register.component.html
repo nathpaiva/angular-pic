@@ -1,24 +1,31 @@
 <div class="container">
-  <form class="row" (submit)="saveNewPhoto($event)">
+  <h1 class="text-center">{{photo.titulo}}</h1>
+  <form [formGroup]="registerPhoto" (submit)="saveNewPhoto($event)" class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label>Título</label>
-        <input name="titulo" [(ngModel)]="photo.titulo" class="form-control" autocomplete="off">
+        <input name="titulo" formControlName="titulo" [(ngModel)]="photo.titulo" class="form-control" autocomplete="off">
+        <div *ngIf="!registerPhoto.controls.titulo.valid">
+          <span *ngIf="registerPhoto.controls.titulo.errors.required" class="form-control alert-danger">Título obrigatório</span>
+          <span *ngIf="registerPhoto.controls.titulo.errors.minlength" class="form-control alert-danger">Título deve ter no mínimo 4 caracteres</span>
+        </div>
       </div>
       <div class="form-group">
         <label>URL</label>
-        <input name="url" [(ngModel)]="photo.url" class="form-control" autocomplete="off">
+        <input name="url" formControlName="url" [(ngModel)]="photo.url" class="form-control" autocomplete="off">
+        <span *ngIf="!registerPhoto.controls.url.valid" class="form-control alert-danger">URL obrigatória</span>
       </div>
       <div class="form-group">
         <label>Descrição</label>
-        <textarea name="descricao" [(ngModel)]="photo.descricao" class="form-control" autocomplete="off"></textarea>
+        <textarea name="descricao" formControlName="descricao" [(ngModel)]="photo.descricao" class="form-control" autocomplete="off"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">
-          Salvar
-      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="!registerPhoto.valid">Salvar</button>
       <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
       <hr>
+    </div>
+    <div class="col-md-6">
+      <photo url="{{photo.url}}" title="{{photo.titulo}}"></photo>
     </div>
   </form>
 </div>
