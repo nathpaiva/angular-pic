@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { PhotoComponent } from '../photo/photo.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PhotoService } from '../photo/photo.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -12,13 +13,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent {
 
   photo: PhotoComponent = new PhotoComponent();
-  http: Http;
   registerPhoto: FormGroup;
+  service: PhotoService;
+  route: ActivatedRoute;
+  router: Router;
+  message: string = '';
+  id: string = '';
 
 
-  constructor(http: Http, fb: FormBuilder) {
+  constructor(fb: FormBuilder, service: PhotoService, route: ActivatedRoute, router: Router) {
+    this.service = service;
+    this.router = router;
+
+    route.params.subscribe(params => {
+      this.id = params['id'];
+
+      if(!!!this.id) return
+
+      this.service.editPhoto(this.id)
+        .subscribe(
+          photo => this.photo = photo,
+          error => console.log(error));
+    })
+
     // registerPhoto
-    this.http = http;
     this.registerPhoto = fb.group({
       titulo: ['', Validators.compose(
         [Validators.required, Validators.minLength(4)]
@@ -30,16 +48,15 @@ export class RegisterComponent {
 
   saveNewPhoto(e) {
     e.preventDefault();
-
-    let headers = new Headers;
-    headers.append('Content-Type', 'application/json');
-
-    this.http.post('/v1/fotos', JSON.stringify(this.photo), { headers })
-      .subscribe(() => {
-        console.log('salvo com sucesso');
+    this.service.register(this.photo)
+      .subscribe((res) => {
         this.photo = new PhotoComponent;
+        this.message = res.showMessage;
+        
+        if (!res.isInclusion) this.router.navigate(['']);
       }, err => console.log(err));
-
   }
+
+
 
 }

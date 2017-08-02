@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { PhotoModule } from './photo/photo.module';
 import { PanelModule } from './panel/panel.module';
+import { ActionModule } from './action/action.module';
 
 import { ListComponent } from './list/list.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpModule,
     PhotoModule,
     PanelModule,
+    ActionModule,
     routing,
     FormsModule,
     ReactiveFormsModule

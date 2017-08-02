@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="text-center">{{photo.titulo}}</h1>
+  <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
   <form [formGroup]="registerPhoto" (submit)="saveNewPhoto($event)" class="row">
     <div class="col-md-6">
       <div class="form-group">
@@ -20,8 +21,8 @@
         <textarea name="descricao" formControlName="descricao" [(ngModel)]="photo.descricao" class="form-control" autocomplete="off"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!registerPhoto.valid">Salvar</button>
-      <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
+      <action typeActio="submit" style=" btn-primary" text="Save" [isDisabled]="!registerPhoto.valid" [needConfirm]="false"></action>
+      <a [routerLink]="['']" class="btn btn-primary">Back</a>
       <hr>
     </div>
     <div class="col-md-6">

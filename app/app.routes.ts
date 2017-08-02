@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 const appRouters: Routes = [
   { path: '', component: ListComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'edit/:id', component: RegisterComponent },
   { path: '**', component: ListComponent }
 ];
 
